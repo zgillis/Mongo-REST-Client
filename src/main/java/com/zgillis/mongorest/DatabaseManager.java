@@ -7,16 +7,12 @@ import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
 
 public class DatabaseManager {
-
-//    private static String connectionString = "mongodb+srv://zgillis:Laptopfoxes57@cluster0-tzs5y.gcp.mongodb.net/test?retryWrites=true";
-    private static String databaseName = "z-stats";
-    private static String collectionName = "btc_stats";
     MongoClientURI clientURI;
     MongoClient client;
     MongoDatabase database;
     MongoCollection collection;
 
-    public DatabaseManager(String connectionString) {
+    public DatabaseManager(String connectionString, String databaseName, String collectionName) {
         clientURI = new MongoClientURI(connectionString);
         client = new MongoClient(clientURI);
         database = client.getDatabase(databaseName);

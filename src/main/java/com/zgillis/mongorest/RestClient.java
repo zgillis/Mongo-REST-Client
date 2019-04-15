@@ -1,5 +1,6 @@
 package com.zgillis.mongorest;
 
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
@@ -13,7 +14,7 @@ public class RestClient {
 
     static final String USER_AGENT = "Mozilla/5.0";
 
-    public static JsonObject getApi(String restUrl) throws IOException {
+    public static JsonElement getApi(String restUrl) throws IOException {
         URL url = new URL(restUrl);
         HttpURLConnection con = (HttpURLConnection)url.openConnection();
         con.setRequestMethod("GET");
@@ -30,7 +31,7 @@ public class RestClient {
         in.close();
 
         JsonParser parser = new JsonParser();
-        JsonObject parsedResponse = (JsonObject)parser.parse(response.toString());
+        JsonElement parsedResponse = parser.parse(response.toString());
         return parsedResponse;
     }
 }
